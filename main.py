@@ -1,28 +1,28 @@
 from PIL import Image
 import numpy as np
+from primitives import Rectangle, Point
 
+class Canvas:
+    def __init__(self, x=100, y=200):
+        self.x = x
+        self.y = y
+        self.array = np.zeros((self.x, self.y, 4), dtype=np.uint8)
+        self.primitives = []
 
-def create_image_array():
-    h = 500
-    w = 500
-    arr = np.zeros((h, w, 4), dtype=np.uint8)
-    return arr
+    def render(self):
+        for primitive in self.primitives:
+            primitive.draw(self.array)
+        img = Image.fromarray(self.array, mode="RGBA")
+        img.show()
 
-
-def show_image_array(array):
-    img = Image.fromarray(array, mode="RGBA")
-    img.show()
+    def add(self, primitive):
+        self.primitives.append(primitive)
 
 
 def main():
-    arr = create_image_array()
-    arr = make_pretty(arr)
-    show_image_array(arr)
-
-
-def make_pretty(arr):
-    return arr
-
+    canvas = Canvas(500, 500)
+    # Add Primitives
+    canvas.render()
 
 if __name__ == "__main__":
     main()
