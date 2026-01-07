@@ -21,10 +21,7 @@ class Canvas:
 
 def main():
     canvas = Canvas(500, 500)
-    canvas.add(Rectangle(10, 20))
-    canvas.add(Rectangle(50, 50, Point(275, 125)))
-    canvas.add(Rectangle(250, 100, Point(50, 100), color=1))
-    canvas.add(Rectangle(50, 400, Point(250, 0), color=2))
+    # Add Primitives
     canvas.render()
 
 if __name__ == "__main__":
